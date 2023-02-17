@@ -22,6 +22,7 @@ class Category(models.Model):
 class OilType(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    category = models.ForeignKey(Category, related_name='o_types', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('name',)
@@ -35,6 +36,7 @@ class OilType(models.Model):
 class Viscosity(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    category = models.ForeignKey(Category, related_name='visc', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('name',)
@@ -48,6 +50,7 @@ class Viscosity(models.Model):
 class Compound(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    category = models.ForeignKey(Category, related_name='comp', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('name',)
@@ -61,12 +64,24 @@ class Compound(models.Model):
 class Fuel(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    category = models.ForeignKey(Category, related_name='fu', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('name',)
         verbose_name = 'Топливо'
         verbose_name_plural = 'Топливо'
 
+    def __str__(self):
+        return self.name
+class Transmission(models.Model):
+    name = models.CharField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True)
+    category = models.ForeignKey(Category, related_name='trans', on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Тип трансмиссии'
+        verbose_name_plural = 'Тип трансмиссии'
     def __str__(self):
         return self.name
 
