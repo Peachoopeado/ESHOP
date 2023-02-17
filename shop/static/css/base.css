@@ -1,0 +1,6 @@
+input{
+    display: block;
+}
+fieldset{
+    max-width: 300px;
+}

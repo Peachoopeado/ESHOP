@@ -17,9 +17,37 @@
         {% endfor %}
         </ul>
         <h3>Тип масла</h3>
+        <fieldset>
+            {% for oil in oiltype %}
+            <input type="checkbox" id="{{ oil.slug }}">
+            <label for="{{ oil.slug }}">{{ oil.name }}</label>
+            {% endfor %}
+        </fieldset>
+
         <h3>Вязкость</h3>
+        <fieldset>
+            {% for visc in viscosity %}
+            <input type="checkbox" id="{{ visc.slug }}">
+            <label for="{{ visc.slug }}">{{ visc.name }}</label>
+            {% endfor %}
+        </fieldset>
+
         <h3>Состав</h3>
+        <fieldset>
+            {% for comp in compound %}
+            <input type="checkbox" id="{{ comp.slug }}">
+            <label for="{{ comp.slug }}">{{ comp.name }}</label>
+            {% endfor %}
+        </fieldset>
+
         <h3>Топливо</h3>
+        <fieldset>
+            {% for fu in fuel %}
+            <input type="checkbox" id="{{ fu.slug }}">
+            <label for="{{ fu.slug }}">{{ fu.name }}</label>
+            {% endfor %}
+
+        </fieldset>
     </div>
     <div id="main" class="product-list">
         <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
